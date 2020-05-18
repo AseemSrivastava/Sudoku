@@ -27,7 +27,8 @@ The Suduko Program contains three files:
      Note:-
          known issues:-
      
-             -> Currently the program is under development and may sometimes crash unexpectedly (Especially when the input of Number of known 					values to insert is high but under allowed range.)
+             -> Currently the program is under development and may sometimes crash unexpectedly 
+             (Especially when the input of Number of known values to insert is high but under allowed range.)
      
              -> Program may also run into an infinite loop if Number of known values to insert is high (until crashed)
              
