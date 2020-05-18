@@ -1,6 +1,8 @@
 import random
-#import array as arr
 import pprint
+import myChoice
+import checkBox
+import time
 def create():	
 	board = [
 		[0,0,0,0,0,0,0,0,0],
@@ -24,8 +26,10 @@ def create():
 			if(ch == 1):
 				x = random.randint(0,8)
 				y = random.randint(0,8)
-				num = random.randint(1,9)
+				box = checkBox.check(x,y)
+				num = myChoice.take(box, num = None)
 				break
+
 			elif(ch == 2):
 				x = int(input("Enter x coordinate to input value "))
 				y = int(input("Enter y coordinate to input value "))
@@ -48,33 +52,8 @@ def create():
 				if board[i][j] == num:
 					check = False
 					break
-			if x >= 0 and x <= 2 and y >= 0 and y <= 2:
-				box = 0
-		
-			elif x >= 0 and x <= 2 and y >= 3 and y <= 5:
-				box = 1
-		
-			elif x >= 0 and x <= 2 and y >= 6 and y <= 8:
-				box = 2
-		
-			elif x >= 3 and x <= 5 and y >= 0 and y <= 2:
-				box = 3
-		
-			elif x >= 3 and x <= 5 and y >= 3 and y <= 5:
-				box = 4
-		
-			elif x >= 3 and x <= 5 and y >= 6 and y <= 8:
-				box = 5
-		
-			elif x >= 6 and x <= 8 and y >= 0 and y <= 2:
-				box = 6
-		
-			elif x >= 6 and x <= 8 and y >= 3 and y <= 5:
-				box = 7
-		
-			elif x >= 6 and x <= 8 and y >= 6 and y <= 8:
-				box = 8
-		
+			box = checkBox.check(x,y)
+
 			if box == 0:
 				for i in range(0,3):
 					for j in range(0,3):
@@ -141,9 +120,52 @@ def create():
 				print("Current board is")
 				pprint.pprint(board) 
 				print("##############################")
+			else:
+				print("Number cannot insert since citeria do not match for valid board")
+				myChoice.take(box, num)
 		else:
 			print("Some value already present at given coordinates...Cannot insert")
+			myChoice.take(box, num)
 
-#pprint.pprint(board)
+
 if __name__ == "__main__":
+	start_time = time.time()
+	num = [1,2,3,4,5,6,7,8,9]
+	with open('num0.txt', 'w') as file:
+		for n in num:
+			file.write("%i\n" % n)
+
+	with open('num1.txt', 'w') as file:
+		for n in num:
+			file.write("%i\n" % n)
+	
+	with open('num2.txt', 'w') as file:
+		for n in num:
+			file.write("%i\n" % n)
+	
+	with open('num3.txt', 'w') as file:
+		for n in num:
+			file.write("%i\n" % n)
+
+	with open('num4.txt', 'w') as file:
+		for n in num:
+			file.write("%i\n" % n)
+
+	with open('num5.txt', 'w') as file:
+		for n in num:
+			file.write("%i\n" % n)
+
+	with open('num6.txt', 'w') as file:
+		for n in num:
+			file.write("%i\n" % n)
+
+	with open('num7.txt', 'w') as file:
+		for n in num:
+			file.write("%i\n" % n)
+
+	with open('num8.txt', 'w') as file:
+		for n in num:
+			file.write("%i\n" % n)
+
 	create()
+	print("--- %s seconds ---" % (time.time() - start_time))
