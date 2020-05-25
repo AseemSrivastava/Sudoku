@@ -157,7 +157,7 @@ def create(countValues):
 				pprint.pprint(board) 
 				print("##############################")
 			else:
-				print("Number cannot insert since citeria do not match for valid board")
+				print("Cannot insert number as same value present at given row/column")
 				myChoice.take(box, num)
 		else:
 			print("Some value already present at given coordinates...Cannot insert")
@@ -165,6 +165,7 @@ def create(countValues):
 
 
 	print("Total execution time after ignoring the input time of user is %s seconds " % (time.time() - execution_time))
+	print("Time taken by user to input the data "+str(time.time() - start_time - (time.time() - execution_time)))
 
 
 if __name__ == "__main__":
