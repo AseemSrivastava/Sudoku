@@ -27,6 +27,4 @@ The Suduko Program contains three files:
      Note:-
          known issues:-
      
-             -> Program may run into infinite loop if number of known values is not in permissible range
-             
-             -> Unexpected behaviour if Number of known values is not in the permissible range
+             -> The program chooses the same coordinates again which are already filled
