@@ -3,7 +3,7 @@ import pprint
 import myChoice
 import checkBox
 import time
-def create():	
+def create(countValues):	
 	board = [
 		[0,0,0,0,0,0,0,0,0],
 		[0,0,0,0,0,0,0,0,0],
@@ -16,9 +16,10 @@ def create():
 		[0,0,0,0,0,0,0,0,0]
 		]
 	v = int(input("Enter number of known values to put in sudoku board "))
-	print("Press 1 for automatic generate")
-	print("Press 2 for user generate")
+	print("Press 1 to generate the board automatically")
+	print("Press 2 to generate the board manually")
 	ch = int(input())
+	execution_time = time.time()
 	count = 0
 	while(count < v):
 		check = True
@@ -27,6 +28,15 @@ def create():
 				x = random.randint(0,8)
 				y = random.randint(0,8)
 				box = checkBox.check(x,y)
+				avail = countValues[box]
+
+				while avail == 0:
+					print("Box is full cannot insert... choosing another coordinates")
+					x = random.randint(0,8)
+					y = random.randint(0,8)
+					box = checkBox.check(x,y)
+					avail = countValues[box]
+
 				num = myChoice.take(box, num = None)
 				break
 
@@ -116,6 +126,7 @@ def create():
 			if check == True:
 				board[x][y] = num
 				count = count + 1
+				countValues[box] = countValues[box] - 1
 				print("Number inserted sucessfully")
 				print("Current board is")
 				pprint.pprint(board) 
@@ -126,6 +137,9 @@ def create():
 		else:
 			print("Some value already present at given coordinates...Cannot insert")
 			myChoice.take(box, num)
+
+
+	print("Total execution time after ignoring the input time of user is %s seconds " % (time.time() - execution_time))
 
 
 if __name__ == "__main__":
@@ -167,5 +181,8 @@ if __name__ == "__main__":
 		for n in num:
 			file.write("%i\n" % n)
 
-	create()
-	print("--- %s seconds ---" % (time.time() - start_time))
+	countValues = [9,9,9,9,9,9,9,9,9]
+
+	create(countValues)
+	print("Total execution time %s seconds " % (time.time() - start_time))
+	
