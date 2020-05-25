@@ -15,25 +15,44 @@ def create(countValues):
 		[0,0,0,0,0,0,0,0,0],
 		[0,0,0,0,0,0,0,0,0]
 		]
+
+	X_Cord = [9,9,9,9,9,9,9,9,9]
+	Y_Cord = [9,9,9,9,9,9,9,9,9]
+	X_Index = [0,1,2,3,4,5,6,7,8]
+	Y_Index = [0,1,2,3,4,5,6,7,8]
 	v = int(input("Enter number of known values to put in sudoku board "))
+	if v < 0 or v > 81:
+		while True:
+			print("Value should be from 1 to 81 ")
+			v = int(input("Enter number of known values to put in sudoku board "))
+			if v > 0 and v < 82:
+				break
 	print("Press 1 to generate the board automatically")
 	print("Press 2 to generate the board manually")
 	ch = int(input())
+	if ch < 1 or ch > 2:
+		while True:
+			print("Wrong Input... Please choose from given option only")
+			print("Press 1 to generate the board automatically")
+			print("Press 2 to generate the board manually")
+			ch = int(input())
+			if ch == 1 or ch == 2:
+				break
 	execution_time = time.time()
 	count = 0
 	while(count < v):
 		check = True
 		while(True):
 			if(ch == 1):
-				x = random.randint(0,8)
-				y = random.randint(0,8)
+				x = random.choice(X_Index)
+				y = random.choice(Y_Index)
 				box = checkBox.check(x,y)
 				avail = countValues[box]
-
+				#This while loop should not run since box is only selected if it has spaces left
 				while avail == 0:
 					print("Box is full cannot insert... choosing another coordinates")
-					x = random.randint(0,8)
-					y = random.randint(0,8)
+					x = random.choice(X_Index)
+					y = random.choice(Y_Index)
 					box = checkBox.check(x,y)
 					avail = countValues[box]
 
@@ -127,6 +146,12 @@ def create(countValues):
 				board[x][y] = num
 				count = count + 1
 				countValues[box] = countValues[box] - 1
+				X_Cord[x] = X_Cord[x] - 1
+				Y_Cord[y] = Y_Cord[y] - 1
+				if X_Cord[x] == 0:
+					X_Index.remove(x)
+				if Y_Cord[y] == 0:
+					Y_Index.remove(y)
 				print("Number inserted sucessfully")
 				print("Current board is")
 				pprint.pprint(board) 
