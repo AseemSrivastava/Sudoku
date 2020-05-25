@@ -1,3 +1,5 @@
+#This Module is used to return the box number according to the given parameter
+
 def check(x, y):
 	if x >= 0 and x <= 2 and y >= 0 and y <= 2:
 		box = 0

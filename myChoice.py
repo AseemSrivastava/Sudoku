@@ -1,3 +1,4 @@
+#This Module is used to insert/delete value from files and return a random value from available values for particular grid 
 import random
 def take(box, num):
 	temp = []
