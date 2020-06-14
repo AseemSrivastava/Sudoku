@@ -14,7 +14,7 @@ The Suduko Program contains one file:
      
   WORKING:
   
-  	-> The Program will ask user to input number of values to be filled at the beginning (minimum 17) [yet to implement]
+  	-> The Program will ask user to input number of values to be filled at the beginning.
   
   	-> The Program will first generate a complete valid Sudoku board and then remove 
   	some numbers from random grid and then display it.
