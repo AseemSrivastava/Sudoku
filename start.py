@@ -39,7 +39,8 @@ answer = [ [nums[pattern(r,c)] for c in cols] for r in rows ]
 '''
 
 squares = side*side
-empties = squares * 3//4
+empties = int(input("Enter number of grids to stay empty(0-64)"))
+
 
 for p in sample(range(squares),empties):
 	board[p//side][p%side] = 0
@@ -108,6 +109,11 @@ for r in range(1,side+1):
 print("\n")
 print("Solution is") 
 pprint.pprint(answer)
+
+
+
+
+
 
 if __name__ == '__main__':
 	pass
