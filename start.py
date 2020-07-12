@@ -109,6 +109,8 @@ for r in range(1,side+1):
 print("\n")
 print("Solution is") 
 pprint.pprint(answer)
+print("\n")
+input("Press Enter to exit")
 
 
 
